@@ -1,0 +1,78 @@
+extends layout/layout
+block head
+  +head("Giỏ hàng")
+block header
+  +header
+block content
+  main
+    .page-cart
+      .container
+        +breadcum({title: "Giỏ hàng"})
+        hr
+        .table-responsive.mt-5.pt-2
+          table.table.table-bordered.text-center
+            thead
+              tr
+                th(scope="col") STT
+                th(scope="col") SẢN PHẨM
+                th(scope="col") THÔNG TIN
+                th(scope="col") ĐƠN GIÁ
+                th(scope="col") SỐ LƯỢNG
+                th(scope="col") THÀNH TIỀN
+                th(scope="col") XÓA
+            tbody
+              tr 
+                td(scope="row") 1
+                td 
+                  img(src="images/product-cart1.jpg", alt="product cart", class="img-fluid")
+                td 
+                  h4 Máy khoan, cắt đa năng CNC
+                td.cart-price 2.350.00 Đ
+                td
+                  input(value="1", type="text", name="quantity")
+                td.cart-price 2.350.00 Đ
+                td
+                  a(href="#", title="Xóa", class="font-weight-bold remove")
+                    i.fa.fa-times
+              tr 
+                td(scope="row") 2
+                td 
+                  img(src="images/product-cart2.jpg", alt="product cart", class="img-fluid")
+                td 
+                  h4 Máy khoan, cắt đa năng CNC
+                td.cart-price 2.350.00 Đ
+                td
+                  input(value="1", type="text", name="quantity")
+                td.cart-price 2.350.00 Đ
+                td
+                  a(href="#", title="Xóa", class="font-weight-bold remove")
+                    i.fa.fa-times
+              tr 
+                td(scope="row") 3
+                td 
+                  img(src="images/product-cart3.jpg", alt="product cart", class="img-fluid")
+                td 
+                  h4 Máy khoan, cắt đa năng CNC
+                td.cart-price 2.350.00 Đ
+                td
+                  input(value="1", type="text", name="quantity")
+                td.cart-price 2.350.00 Đ
+                td
+                  a(href="#", title="Xóa", class="font-weight-bold remove")
+                    i.fa.fa-times
+          .col-sm-5.offset-sm-7.px-0.pt-3
+            table.table.table-bordered
+              tr.text-right
+                td Tổng tiền:
+                td 6.850.000 Đ
+              tr.text-right
+                td thuế (VAT):
+                td 6.850.000 Đ
+              tr.text-right
+                td thanh toán:
+                td.td.cart-price.price-total 7.520.000 Đ
+            .cart-action.text-right
+              a(href="product.html", title="") tiếp tục mua hàng
+              a(href="#", title="") thanh toán
+block footer
+  +footer()

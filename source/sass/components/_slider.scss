@@ -1,0 +1,35 @@
+.slider {
+  margin-top: 30px;
+
+  &__left {
+    background-image: url('../images/slider.jpg');
+    background-size: contain;
+    min-height: 100%;
+  }
+
+  &__content {
+    @include transition(all .3s ease);
+    margin-top: -1px;
+    padding: 30px;
+
+    p {
+      @include font-size(13px);
+      font-family: $font-family-arial;
+    }
+
+    i {
+      @include font-size(30px);
+      color: $primary;
+    }
+
+    &:hover {
+      background-color: $primary;
+    }
+
+    &:hover,
+    &:hover h6,
+    &:hover i {
+      color: $white;
+    }
+  }
+}

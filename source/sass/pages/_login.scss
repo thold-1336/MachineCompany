@@ -1,0 +1,95 @@
+.page-register,
+.page-login {
+  font-family: $font-family-arial;
+  padding-bottom: 90px;
+
+  @include media-breakpoint-down (lg) {
+    padding-bottom: 50px;
+  }
+
+  h4 {
+    @include font-size(14px);
+    font-family: $font-family-roboto;
+    font-weight: $font-weight-medium;
+  }
+
+  .form-check-input {
+    margin-top: -15px;
+  }
+
+  span {
+    color: $red;
+  }
+
+  label {
+    color: $mine-shaft3;
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+
+    &.form-check-label {
+      color: $gray;
+    }
+  }
+
+  .error {
+    color: $flame-pea;
+    margin-bottom: 0;
+    padding-top: 10px;
+  }
+}
+
+.page-login {
+  &__form {
+    button {
+      @include transition(all .3s ease);
+      background-color: $secondary;
+      color: $white;
+      padding: 14px 22px;
+      //scss-lint:disable NestingDepth
+      &:hover {
+        background-color: $primary;
+      }
+    }
+
+    a {
+      color: $primary;
+    }
+
+  }
+
+  &__register {
+    a {
+      background-color: $primary;
+      color: $white;
+      display: inline-block;
+      font-family: $font-family-roboto;
+      font-weight: $font-weight-medium;
+      padding: 15px 35px;
+      //scss-lint:disable NestingDepth
+      &:hover {
+        @include transition(all .3s ease);
+        background-color: $secondary;
+      }
+    }
+  }
+}
+//scss-lint:disable SelectorFormat
+.page-register_form {
+  button,
+  a {
+    color: $white;
+  }
+
+  button {
+    background-color: $primary;
+    padding: 14px 22px;
+  }
+
+  a {
+    background-color: $secondary;
+    display: inline-block;
+    padding: 15px 35px;
+  }
+}

@@ -1,0 +1,54 @@
+.page-product {
+  padding-bottom: 80px;
+
+  @include media-breakpoint-down (md) {
+    padding-bottom: 30px;
+  }
+}
+
+.sidebar {
+  h3 {
+    @include font-size(13px);
+    color: $primary;
+    font-family: $font-family-arial;
+    font-weight: $font-weight-normal;
+  }
+
+  .card {
+    border: 0;
+    margin-bottom: 30px;
+  }
+
+  .card-header {
+    background-color: $secondary;
+    padding: 22px 20px;
+  }
+}
+
+.promo-product {
+  .list-group-item {
+    padding: 20px 15px;
+  }
+}
+//scss-lint:disable SelectorFormat
+.cate-product__top {
+  .nav-item {
+    border: 1px solid $gray;
+  }
+
+  .nav-link {
+    @include font-size(18px);
+    color: $gray;
+    display: block;
+    padding: 6px 10px;
+
+    &.active {
+      color: $primary;
+    }
+  }
+
+  label {
+    color: $secondary;
+    font-family: $font-family-arial;
+  }
+}

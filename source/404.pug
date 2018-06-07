@@ -1,0 +1,19 @@
+extends layout/layout
+block head
+  +head("404")
+block header
+  +header
+block content
+  main
+    .page-404
+      .container
+        .row.d-flex.align-items-center
+          .col-md-8.text-center
+            h1 404 error
+            p Chúng tôi không tìm thấy kết quả nào phù hợp với tìm kiếm của bạn !
+            p Xin vui lòng trở về trang chủ
+            a(href="index.html") TRANG CHỦ
+          .col-md-4.mt-5.mt-md-0
+            img(src="images/404.jpg", alt="404", class="img-fluid")
+block footer
+  +footer()

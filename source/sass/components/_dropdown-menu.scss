@@ -1,0 +1,76 @@
+.sub-menu {
+  @include transition(all .5s ease);
+  background-color: $white;
+  left: 0;
+  min-width: 200px;
+  opacity: 0;
+  position: absolute;
+  top: 63px;
+  transform: translateY(80px);
+  visibility: hidden;
+  z-index: 2;
+
+  @include media-breakpoint-down(md) {
+    display: inline-block;
+    top: 30px;
+    transform: translateY(0);
+  }
+
+  @include media-breakpoint-down(sm) {
+    min-width: 160px;
+  }
+
+  .nav-item {
+    padding: 15px 20px;
+    position: relative;
+
+    @include media-breakpoint-down(md) {
+      padding: 5px 10px;
+    }
+    //scss-lint:disable NestingDepth
+    &:hover {
+      @include transition(all .5s ease);
+      background-color: $primary;
+
+      > a {
+        color: $white;
+      }
+
+      .second-menu {
+        opacity: 1;
+        top: 0;
+        visibility: visible;
+      }
+    }
+
+    a {
+      color: $mine-shaft2;
+    }
+  }
+}
+
+.second-menu {
+  @include transition(all .4s ease);
+  background-color: $white;
+  left: 200px;
+  min-width: 200px;
+  opacity: 0;
+  position: absolute;
+  top: 100px;
+  visibility: hidden;
+  z-index: 10;
+
+  @include media-breakpoint-down (sm) {
+    left: 140px;
+    min-width: 160px;
+    top: 0;
+  }
+}
+
+.mega-menu-mobile {
+  .sub-menu {
+    display: inline-block;
+    position: relative;
+    top: 0;
+  }
+}

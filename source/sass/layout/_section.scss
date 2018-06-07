@@ -1,0 +1,142 @@
+.banner-full {
+  .row {
+    background-image: url('../images/banner3.jpg');
+    background-size: cover;
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  a {
+    background-color: $primary;
+    color: $white;
+    display: inline-block;
+    font-weight: $font-weight-medium;
+    margin-top: 15px;
+    padding: 14px 22px;
+    text-transform: uppercase;
+
+    + a {
+      background-color: transparent;
+      border: 1px solid $black;
+      color: $black;
+      margin-left: 10px;
+    }
+  }
+
+  p {
+    @include font-size(16px);
+    color: $black;
+    font-weight: $font-weight-light;
+    letter-spacing: .5px;
+    width: 85%;
+  }
+}
+
+.product-header {
+  a {
+    color: $gray;
+    padding: 5px 10px;
+
+    &:hover,
+    &.active {
+      background-color: $primary;
+      border: 1px solid $primary;
+      color: $white;
+    }
+  }
+}
+
+.feature-product {
+  .owl-nav {
+    top: -11%;
+  }
+}
+
+.news-product {
+  .owl-nav {
+    top: -17%;
+  }
+}
+
+.selling-products {
+  .owl-nav {
+    top: -11%;
+  }
+}
+
+.news-product-list {
+  .owl-nav {
+    top: -15%;
+  }
+}
+
+.brand {
+  background-color: $alabaster;
+  padding: 40px 0;
+
+  .owl-nav {
+    position: relative;
+
+    button {
+      position: absolute;
+      top: -60px;
+    }
+
+    .owl-prev {
+      left: -5%;
+    }
+
+    .owl-next {
+      right: -5%;
+    }
+
+    i {
+      @include font-size(30px);
+      border: 0;
+      // scss-lint:disable NestingDepth
+      &:hover {
+        background-color: transparent;
+        color: $primary;
+      }
+    }
+  }
+
+  // scss-lint:disable ImportantRule
+  img {
+    width: inherit !important;
+  }
+}
+
+.newsletter {
+  background: center / cover no-repeat url($path-image + 'bg-register.jpg');
+  padding: 60px 0;
+
+  h3 {
+    @include font-size(24px);
+    color: $white;
+    font-weight: $font-weight-light;
+    text-transform: inherit;
+  }
+
+  input,
+  button {
+    border-radius: 50px;
+  }
+
+  input {
+    min-width: 600px;
+    padding: 0 20px;
+
+    @include media-breakpoint-down(sm) {
+      min-width: inherit;
+    }
+  }
+
+  button {
+    @include font-size(14px);
+    background-color: $primary;
+    color: $white;
+    padding: 14px 40px;
+  }
+}
+

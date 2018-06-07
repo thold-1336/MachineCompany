@@ -1,0 +1,37 @@
+extends layout/layout
+block head
+  +head("Đăng nhập")
+block header
+  +header
+block content
+  main
+    .page-login
+      .container
+        +breadcum({title: 'Đăng nhập'})
+        hr
+        .row
+          .col-sm-6
+            .page-login__form
+              h4.my-4.pb-1 Thông tin đăng nhập
+              form(action="#", id="login-form")
+                .form-group
+                  label(for="txtName", class="pb-1") Họ và tên: #[span *]
+                  input(type="text", class="form-control", id="txtName", name="txtName")
+                .form-group
+                  label(for="txtEmail", class="pb-1") Email: #[span *]
+                  input(type="email", class="form-control", id="txtEmail", name="txtEmail")
+                .form-group.form-check.mt-4.clearfix
+                  input(type="checkbox", class="form-check-input", id="remember")
+                  label(for="remember", class="form-check-label") Ghi nhớ đăng nhập
+                  a(href="#", title="Quên mật khẩu", class="float-left float-sm-right my-2") 
+                    em Bạn quên mật khẩu?
+                button(type="submit", class="btn mt-0 mt-xl-3") ĐĂNG NHẬP
+          .col-sm-6
+            .page-login__register
+              h4.my-4.pb-1 Bạn chưa có tài khoản?
+              p 
+                | Đăng ký tài khoản để mua hàng nhanh hơn. Theo dõi đơn đặt hàng, vận chuyển. 
+                | Cập nhật các tin tức sự kiện và các chương trình giảm giá của chúng tôi.
+              a(href="register.html", title="", class="mt-4") ĐĂNG KÝ
+block footer
+  +footer()

@@ -1,0 +1,311 @@
+mixin social-header(...data)
+  ul.list-unstyled.list-inline
+    each item in data
+      li.list-inline-item
+        a(href="#", title="")
+          i(class="fa fa-" + item)
+
+mixin social-footer(data)
+  .social__content
+    ul.list-unstyled
+      each val, index in data
+        li.py-1
+          a(href="#", title="").
+            #[i(class="mr-2 fa fa-" + val)] 
+            #{index}
+
+mixin breadcum(data)
+  if data.singlePage
+    ul.list-inline.list-unstyled.breadcum.pt-4.pb-2
+      li.list-inline-item
+        a(href="index.html", title="home") Trang chủ
+      li.list-inline-item
+        a(href="product.html", title="home") Danh mục sản phẩm
+      li.list-inline-item= data.title
+  else
+    ul.list-inline.list-unstyled.breadcum.pt-4.pb-2
+      li.list-inline-item
+        a(href="index.html", title="home") Trang chủ
+      li.list-inline-item= data.title
+
+mixin dropdown-menu()
+  ul.list-unstyled.shadow.sub-menu
+    li.nav-item
+      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Giới thiệu chung
+    li.nav-item
+      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng
+      ul.list-unstyled.shadow.second-menu
+        li.nav-item
+          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A
+        li.nav-item
+          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A1
+        li.nav-item
+          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A2
+        li.nav-item
+          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A3
+    li.nav-item
+      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Chính sách ưu đãi
+    li.nav-item
+      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Thông tin tuyển dụng
+
+mixin slider-promo(icon, heading, text)
+  .slider__promo.mb-3.mb-xl-0
+    .media.border.slider__content
+      i(class="align-self-center mr-4 float-left fa fa-" + icon)
+      .media-body
+        h6=heading
+        p=text
+
+mixin sidebar-category(...data)
+  ul.list-group.shadow
+    each item in data
+      li.list-group-item
+        a(href="", title="") #[i.fa.fa-th-large.mr-1] #{item} 
+
+mixin title(data)
+  if data.titleSidebar
+    .page-heading.m-0.d-flex.align-items-center
+      i(class="fa fa-" + data.icon)
+      h3.ml-2=data.titleSidebar
+  else
+    .page-heading.d-flex.align-items-center
+      i(class="fa fa-" + data.icon)
+      h2= data.text
+    
+mixin footer-menu(...data)
+  ul.list-unstyled
+    each item in data
+      li.py-1
+        a(href="#", title="")=item
+
+mixin banner(data)
+  .banner__item
+    .banner__content
+      span.sale-off GIẢM
+        b= data.sale
+      h2= data.heading
+      h5= data.subHeading
+      span.price= data.price + " Đ"
+      p= data.text 
+        em.sale=data.priceSale + " Đ"
+    img(src="images/" + data.imgName, alt="banner image", class="img-fluid")
+
+mixin product-block(data)
+  if data.productList
+    .media.product.product-list.d-flex.flex-column.flex-md-row.wow.fadeInUp&attributes({'data-wow-duration':'1.2s', 'data-wow-delay': '0.5s'})
+      .product__img.text-center
+        a(href="single-product.html", title="")
+          img(src="images/" + data.imgName, alt="", class="img-fluid")
+      .media-body.ml-4
+        .product__caption
+          h3.product__title.my-2
+            a(href="single-product.html", title="")= data.title
+          ul.list-inline.list-unstyled.rating
+            - for (let x = 0; x < 4; x++)
+              li.list-inline-item
+                a(href="#", title="rating")
+                  i.fa.fa-star
+            li.list-inline-item
+                a(href="#", title="rating")
+                  i.fa.fa-star-o
+            li.list-inline-item
+              em (12 đánh giá)
+          p.py-2.text-justify.text-md-left= data.text
+        span.product__price= data.price + " Đ"
+        .product__action.py-3.pt-2
+          a(href="#", title="", class="mr-1 mb-2 mb-md-0") mua ngay
+          a(href="single-product.html", title="") xem chi tiết
+  else
+    .product.wow.zoomIn&attributes({'data-wow-duration':'1.2s', 'data-wow-delay': '0.5s'})
+      .product__img.text-center
+        a(href="single-product.html", title="")
+          img(src="images/" + data.imgName, alt="", class="img-fluid")
+      .product__caption.text-center.py-3.pb-md-5
+        span.product__price= data.price + " Đ"
+        h3.product__title.my-2
+          a(href="single-product.html", title="")= data.title
+        ul.list-inline.list-unstyled.rating
+          li.list-inline-item
+            a(href="#", title="rating")
+              i.fa.fa-star
+          li.list-inline-item
+            a(href="#", title="rating")
+              i.fa.fa-star
+          li.list-inline-item
+            a(href="#", title="rating")
+              i.fa.fa-star
+          li.list-inline-item
+            a(href="#", title="rating")
+              i.fa.fa-star
+          li.list-inline-item
+            a(href="#", title="rating")
+              i.fa.fa-star-o
+          li.list-inline-item
+            em (12 đánh giá)
+      .product__action.text-center.pb-4.mt-2
+        a(href="#", title="", class="mr-1") mua ngay
+        a(href="single-product.html", title="") xem chi tiết
+
+mixin promo-product(data)
+    li.list-group-item
+      .media
+        img(src="images/" + data.imgName, alt="", class="img-fluid")
+        .media-body.ml-3
+          h4.product__title
+            a(href="single-product.hml", title="",)= data.title
+          span.product__price=data.price
+
+mixin product-color(...data)
+  ul.list-group.shadow
+      each item in data
+        li.list-group-item
+          a(href="", title="") #[span.mr-1] #{item} 
+          
+mixin mega-menu-item(...data)
+  ul.list-unstyled
+    each item in data
+      li.nav-item
+        a(href="product.html", title="") #[i.fa.fa-caret-right.mr-3] #{item}
+
+mixin mega-menu()
+  .mega-menu.shadow.d-none.d-lg-block
+    .row
+      .col-sm-9
+        .row
+          .col-sm-4
+            .mega-menu___item
+              +title({icon:"th-large", text: 'MÁY KHOAN ĐA NĂNG CNC'})
+              +mega-menu-item(
+                'Máy khoan CNC điện',
+                'Máy phay đa năng 3R',
+                'Máy hàn, cắt kim loại',
+                'Máy in phun tích điện',
+                'Máy ép gỗ chuẩn Nano'
+              )
+          .col-sm-4
+            .mega-menu___item
+              +title({icon:"th-large", text: 'MÁY CẮT PLASMAR'})
+              +mega-menu-item(
+                'Máy khoan CNC điện',
+                'Máy phay đa năng 3R',
+                'Máy hàn, cắt kim loại',
+                'Máy in phun tích điện',
+                'Máy ép gỗ chuẩn Nano'
+              )
+          .col-sm-4
+            .mega-menu___item
+              +title({icon:"th-large", text: 'MÁY PHAY CÔNG NGHIỆP'})
+              +mega-menu-item(
+                'Máy khoan CNC điện',
+                'Máy phay đa năng 3R',
+                'Máy hàn, cắt kim loại',
+                'Máy in phun tích điện',
+                'Máy ép gỗ chuẩn Nano'
+              )
+        .row.mt-4
+          .col-sm-4
+            .mega-menu___item
+              +title({icon:"th-large", text: 'MÁY ÉP NHỰA THỦ CÔNG'})
+              +mega-menu-item(
+                'Máy khoan CNC điện',
+                'Máy phay đa năng 3R',
+                'Máy hàn, cắt kim loại',
+                'Máy in phun tích điện'
+              )
+          .col-sm-4
+            .mega-menu___item
+              +title({icon:"th-large", text: 'MÁY UỐNG TÔN ĐIỆN'})
+              +mega-menu-item(
+                'Máy khoan CNC điện',
+                'Máy phay đa năng 3R',
+                'Máy hàn, cắt kim loại',
+                'Máy in phun tích điện'
+              )
+          .col-sm-4
+            .mega-menu___item
+              +title({icon:"th-large", text: 'MÁY NÉN KHÍ CNC'})
+              +mega-menu-item(
+                'Máy khoan CNC điện',
+                'Máy phay đa năng 3R',
+                'Máy hàn, cắt kim loại',
+                'Máy in phun tích điện'
+              )
+      .col-sm-3.pl-1.pb-3
+        .mega-menu___img
+          img(src="images/mega-menu-img.jpg", alt="mega img", class="img-fluid")
+
+mixin mega-menu-mobile()
+  .mega-menu-mobile.collapse
+    ul.list-unstyled.shadow.sub-menu
+      li.nav-item
+        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan đa năng CNC
+        ul.list-unstyled.shadow.second-menu
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép gỗ chuẩn Nano
+      li.nav-item
+        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy cắt Plasmar
+        ul.list-unstyled.shadow.second-menu
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép gỗ chuẩn Nano
+      li.nav-item
+        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay công nghiệp
+        ul.list-unstyled.shadow.second-menu
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép gỗ chuẩn Nano
+      li.nav-item
+        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép nhựa thủ công
+        ul.list-unstyled.shadow.second-menu
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
+      li.nav-item
+        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy uốn tôn điện
+        ul.list-unstyled.shadow.second-menu
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
+      li.nav-item
+        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy nén khí CNC
+        ul.list-unstyled.shadow.second-menu
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
+          li.nav-item
+            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện

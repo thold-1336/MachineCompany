@@ -1,0 +1,27 @@
+.page-link {
+  @include font-size(16px);
+  border-radius: 0;
+  color: $gray;
+  font-family: $font-family-arial;
+  margin-left: 5px;
+  padding: 9px 15px;
+
+  &:hover {
+    background-color: $primary;
+    border-color: $primary;
+    color: $white;
+  }
+}
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+  @include font-size(13px);
+  border-radius: 0;
+  padding: 11px;
+}
+
+.page-item.active .page-link {
+  background-color: $primary;
+  border-color: $primary;
+}
+

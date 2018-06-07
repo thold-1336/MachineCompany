@@ -1,0 +1,143 @@
+extends layout/layout
+block head
+  +head("Máy khoan CNC 3D")
+block header
+  +header
+block content
+  main
+    .page-product
+      .container
+          +breadcum({singlePage: 'true', title: 'Máy khoan CNC 3D'})
+          .row.mt-3.d-flex.flex-xl-row.flex-column-reverse
+            .col-xl-3
+              .sidebar
+                .card.mt-3.mt-lg-5.mt-xl-0
+                  .card-header
+                    +title({icon: "bars", titleSidebar: "Danh mục sản phẩm"})
+                  +sidebar-category(
+                    'Máy in phun khổ lớn','Máy quét Canon 3D','Máy hàn điện Alunima',
+                    'Máy khoan Decameta','Máy phay đa năng CNC', 'Máy mài, tiện DC 12V',
+                    'Máy khoan, cắt CNC','Máy quay thông minh N3','Motor R34C đa dụng', 'Máy in laser màu 3D'
+                    )
+                .card.promo-product
+                  .card-header
+                    +title({icon: "gift", titleSidebar: "Sản phẩm khuyến mãi"})
+                  ul.list-group.shadow
+                    - for(let x = 1; x < 6; x++)
+                      +promo-product({imgName: 'product-promo' + x + '.jpg', title: 'MÁY KHOAN BLACK DECKER LOẠI 1', price: '1.550.000 Đ'})
+            .col-xl-9
+              .single-product
+                .row
+                  .col-md-6
+                    .product-gallery.mb-2.mb-md-5.pb-2
+                      .product-gallery__img.border.mb-3
+                        img(src="images/product-single.jpg", alt="single product", width="100%")
+                      ul.list-unstyled.list-inline.text-center.text-md-left.product-gallery__thumb
+                        - for(let x = 1; x < 6; x++)
+                          li.list-inline-item
+                            img(src="images/product-thumb" + x +".jpg", alt="product-thumb", class="img-fluid mb-3 mb-md-0")
+                  .col-md-6
+                    .single-product__detail
+                      h3 máy khoan cnc 3d
+                      ul.list-inline.list-unstyled.rating.py-2
+                        - for (let x = 0; x < 4; x++)
+                          li.list-inline-item
+                            a(href="#", title="rating")
+                              i.fa.fa-star
+                        li.list-inline-item
+                            a(href="#", title="rating")
+                              i.fa.fa-star-o
+                        li.list-inline-item
+                          em (12 đánh giá)
+                        li.list-inline-item
+                          | |
+                        li.list-inline-item
+                          a(href="#", title="") Gửi bình luận của bạn
+                      span.product__price GNY: 2.350.000 Đ
+                      .single-product__info.border-top.border-bottom.py-3.mt-3
+                        h5 Thông tin sản phẩm:
+                        p.border-bottom.pb-3
+                          | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                          | tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                          | quis nostrud exercition ullamco laboris nisi ut aliquip ex ea commodo consequat...
+                        form(action="#", class="mt-3")
+                          .form-row
+                            .col-md-6.pr-1.pr-md-3.mb-2.mb-md-0
+                              label(for="size") Size:
+                              select(class="custom-select", id="size")
+                                option(selected) --Chọn size--
+                                option Nhỏ
+                                option Lớn
+                                option Vừa
+                            .col-md-6.px-1.px-md-3
+                              label(for="color") Màu sắc:
+                              select(class="custom-select", id="color")
+                                option(selected) --Chọn màu--
+                                option Xanh
+                                option Đỏ
+                                option Vàng
+                      .single-product__quantity
+                        form(action="#", class="mt-4 form-inline")
+                          input(type="number", min="1", max="9", step="1", value="1", class="form-control mr-3 mb-3 mb-lg-0")
+                          a(href="#", title="mua ngay") mua ngay
+                      ul.list-inline.list-unstyled.single-product__social.mt-4.mb-4
+                        li.list-inline-item
+                          a(href="#", title="facebook") #[i(class="fa fa-facebook-square")] Like
+                          span 0
+                        li.list-inline-item
+                          a(href="#", title="twitter") #[i(class="fa fa-twitter")] Tweet
+                        li.list-inline-item
+                          a(href="#", title="google plus") #[i(class="fa fa-google-plus")] 1
+                          span 0
+                        li.list-inline-item.ml-3
+                          a(href="#", title="share") #[i(class="fa fa-plus-square")] Share
+                .single-product-tabs
+                  ul(class="nav nav-pill", id="product-tabs", role="tablist")
+                    li.nav-item
+                      a(
+                        class="nav-link border active", 
+                        data-toggle="pill",
+                        href="#information", 
+                        role="tab", 
+                      ) thông tin sản phẩm
+                        
+                    li.nav-item
+                      a(
+                        class="nav-link border", 
+                        data-toggle="pill",
+                        href="#review", 
+                        role="tab", 
+                      ) đánh giá - nhận xét
+                    li.nav-item
+                        a(
+                          class="nav-link border", 
+                          data-toggle="pill",
+                          href="#tags", 
+                          role="tab", 
+                        ) thẻ tags
+                  .tab-content#product-tabs.border.text-justify
+                    .tab-pane.fade.show.active#information 
+                      p.pb-3 Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus.
+                      p.pb-3 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+                      p.pb-3 Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. 
+                      p Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. 
+                    .tab-pane.fade#review
+                      p.pb-3 Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer enim purus, posuere at ultricies eu, placerat a felis. Suspendisse aliquet urna pretium eros convallis interdum. Quisque in arcu id dui vulputate mollis eget non arcu. Aenean et nulla purus.
+                      p.pb-3 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+                    .tab-pane.fade#tags
+                      p.pb-3 Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean eleifend laoreet congue. Vivamus adipiscing nisl ut dolor dignissim semper. Nulla luctus malesuada tincidunt. 
+                      p.pb-3 Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+                .title-related.mt-5
+                  +title({icon: 'th-large', text: 'Sản phẩm tương tự'})
+                .owl-carousel.product-related
+                  .item
+                    +product-block({imgName: 'product1.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                  .item
+                    +product-block({imgName: 'product2.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                  .item
+                    +product-block({imgName: 'product3.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                  .item
+                    +product-block({imgName: 'product1.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+      
+block footer
+  +footer()

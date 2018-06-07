@@ -1,0 +1,195 @@
+.topbar {
+  background-color: $alabaster;
+  border-bottom: 1px solid $mercury;
+
+  .list-inline-item {
+    margin-left: -5px;
+    margin-right: 0;
+  }
+
+  a {
+    @include transition(all .3s ease);
+    border-left: 1px solid $mercury;
+    border-right: 1px solid $mercury;
+    color: $mine-shaft2;
+    display: block;
+    font-weight: $font-weight-medium;
+
+    min-width: 52px;
+    padding: 13px;
+    text-align: center;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+
+  i {
+    line-height: 21px;
+  }
+}
+
+.topbar-bottom {
+  padding: 15px 0;
+
+  h3 {
+    @include font-size(14px);
+    color: $primary;
+  }
+
+  span {
+    @include font-size(13px);
+  }
+
+  &__search {
+    padding-left: 40px;
+    position: relative;
+
+    @include media-breakpoint-down(md) {
+      padding-left: 0;
+    }
+
+    input {
+      border-radius: 50px;
+      padding: 0 20px;
+    }
+
+    button {
+      background-color: transparent;
+      color: $gray;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+
+      @include media-breakpoint-down(md) {
+        top: 0;
+      }
+    }
+  }
+}
+// scss-lint:disable NestingDepth
+.menu {
+  background-color: $secondary;
+
+  &__main {
+    .nav-item {
+      position: relative;
+
+      &:hover .mega-menu {
+        opacity: 1;
+        top: 63px;
+        visibility: visible;
+      }
+
+      &:hover .sub-menu {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+      }
+
+      .nav-link {
+        border-right: 1px solid $mine-shaft2;
+        color: $white;
+        display: inline-block;
+        padding: 21px 30px;
+
+        @include media-breakpoint-down (md) {
+          border: 0;
+          padding: 10px 0;
+        }
+
+        &:hover {
+          background-color: $primary;
+          color: $white;
+
+          @include media-breakpoint-down (md) {
+            background-color: transparent;
+            color: $primary;
+          }
+        }
+
+      }
+
+      &:first-child .nav-link {
+        border-left: 1px solid $mine-shaft2;
+
+        @include media-breakpoint-down (md) {
+          border: 0;
+        }
+      }
+    }
+  }
+
+  &__cart {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .nav-link {
+      border-left: 1px solid $mine-shaft2;
+      border-right: 1px solid $mine-shaft2;
+      color: $white;
+      padding: 21px 25px;
+
+      @include media-breakpoint-down (md) {
+        border: 0;
+      }
+    }
+
+    i {
+      @include font-size(18px);
+    }
+
+    &:hover .cart-content {
+      opacity: 1;
+      transform: translate(0);
+      visibility: visible;
+    }
+  }
+
+  .badge {
+    @include box(20px, 20px, 15px);
+    background: $primary;
+    border-radius: 50%;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+}
+
+.mega-menu {
+  @include transition(all .4s ease);
+  background: $white;
+  left: 25%;
+  min-width: 1110px;
+  opacity: 0;
+  padding: 30px;
+  position: absolute;
+  top: 150px;
+  transform: translate(-27%);
+  visibility: hidden;
+  z-index: 2;
+
+  .page-heading {
+    margin-bottom: 15px;
+
+    h2 {
+      @include font-size(14px);
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  .nav-item {
+    padding: 5px 0;
+  }
+
+  a {
+    color: $gray;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}

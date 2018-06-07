@@ -1,0 +1,71 @@
+// Custom mixin
+
+@mixin font-face ($family, $file) {
+  @font-face {
+    font-family: $family;
+    src: url('#{$path-font}/#{$file}-webfont') format('embedded-opentype'),
+    url('#{$path-font}/#{$file}-webfont.woff') format('woff'),
+    url('#{$path-font}/#{$file}-webfont.ttf') format('truetype');
+  }
+}
+
+// Text
+@mixin text ($size,
+$l-height: null,
+$weight: null,
+$color: null) {
+  font-size: $size;
+  line-height: $l-height;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin center($position) {
+  position: absolute;
+
+  @if $position == 'vertical' {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $position == 'horizontal' {
+    left: 50%;
+    transform: translate(-50%);
+  } @else if $position == 'both' {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin transition ($transition...) {
+  transition: $transition;
+}
+
+@mixin border-radius ($radius) {
+  border-radius: $radius;
+}
+
+@mixin border ($width,
+$style,
+$color) {
+  border-width: $width;
+  border-style: $style;
+  border-color: $color;
+}
+
+@mixin box ($width,
+$height,
+$l-height: null) {
+  width: $width;
+  height: $height;
+  line-height: $l-height;
+}
+
+@mixin font-size ($size) {
+  font-size: calculate-rem($size);
+}

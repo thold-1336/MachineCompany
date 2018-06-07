@@ -1,0 +1,46 @@
+extends layout/layout
+block head
+  +head("Đăng ký")
+block header
+  +header
+block content
+  main
+    .page-register
+      .container
+        +breadcum({title: 'Đăng ký'})
+        hr
+        .row
+          .col-md-12
+            .page-register__form
+              h4.my-4.pb-1 Thông tin cá nhân
+              form(action="#", id="register-form")
+                .row
+                  .col-md-6
+                    label(for="txtName", class="pb-1") Họ và tên: #[span *]
+                    input(type="text", class="form-control", id="txtName", name="txtName")
+                  .col-md-6.mt-3.mt-md-0
+                    label(for="txtEmail", class="pb-1") Email: #[span *]
+                    input(type="email", class="form-control", id="txtEmail", name="txtEmail")
+                .row.mt-3
+                  .col-md-6
+                    label(for="txtPhone", class="pb-1") Số điện thoại: #[span *]
+                    input(type="tel", class="form-control", id="txtPhone", name="txtPhone")
+                  .col-md-6.mt-3.mt-md-0
+                    label(for="txtAddress", class="pb-1") Địa chỉ: #[span *]
+                    input(type="text", class="form-control", id="txtAddress", name="txtAddress")
+                .form-group.form-check.mt-4.clearfix
+                  input(type="checkbox", class="form-check-input", id="registerEmail")
+                  label(for="registerEmail", class="form-check-label mb-2") #[em Đăng kí nhận tin tức qua email]
+                h4.my-4.pb-1 Bạn chưa có tài khoản?
+                .row.mb-5
+                  .col-md-6
+                    label(for="txtName", class="pb-1") Họ và tên: #[span *]
+                    input(type="text", class="form-control", id="txtName", name="txtName")
+                  .col-md-6.mt-3.mt-md-0
+                    label(for="txtEmail", class="pb-1") Email: #[span *]
+                    input(type="email", class="form-control", id="txtEmail", name="txtEmail")
+                a(href="login.html", title="login") QUAY LẠI
+                button(type="submit", class="btn ml-1") ĐĂNG KÝ
+
+block footer
+  +footer()

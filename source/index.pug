@@ -1,0 +1,193 @@
+extends layout/layout
+block head
+  +head("Home", true)
+block header
+  +header
+block content
+  main
+    section.slider
+      .container
+        .row.no-gutters
+          .col-sm-8.d-none.d-xl-block
+            .slider__left
+          .col-xl-4.col-lg-12
+            +slider-promo('plane', 'MIỄN PHÍ VẬN CHUYỂN', 'Chúng tôi vận chuyển miễn phí với các đơn hàng trị giá trên 1000.000đ.')
+            +slider-promo('refresh', 'CHÍNH SÁCH ĐỔI TRẢ', 'Nếu phát hiện lỗi của nhà sản xuất, chúng tôi sẽ đổi mới sản phẩm trong 7 ngày đầu tiên.')
+            +slider-promo('gift', 'KHUYẾN MẠI HÀNG TUẦN', 'Mỗi thứ 7 hàng tuần đều có chương trình giảm giá và khuyến mại lớn.')
+            +slider-promo('thumbs-up', 'CAM KẾT HÀNG CHÍNH HÃNG', 'Chúng tôi cam kết bán hàng chính hãng 100% với tất cả các loại sản phẩm.')
+    // Feature product
+    section.feature-product
+      .container
+        +title({icon: 'th-large', text: 'sản phẩm nổi bật'})
+        .row
+          .col-xl-3.col-lg-4.d-none.d-lg-block
+            .feature-product__left
+              +sidebar-category(
+              'Máy khoan, cắt CNC', 'Máy in phun khổ lớn','Máy quét Canon 3D','Máy hàn điện Alunima',
+              'Máy khoan Decameta','Máy phay đa năng CNC', 'Máy mài, tiện DC 12V',
+              'Máy khoan, cắt CNC','Máy quay thông minh N3','Motor R34C đa dụng', 'Máy in laser màu 3D'
+              )
+          .col-xl-9.col-lg-8.col-md-12
+            .feature-product__right
+              .owl-carousel.feature
+                .item
+                  +product-block({imgName: 'product1.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                  +product-block({imgName: 'product4.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                .item
+                  +product-block({imgName: 'product2.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                  +product-block({imgName: 'product5.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                .item
+                  +product-block({imgName: 'product3.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                  +product-block({imgName: 'product6.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                .item
+                  +product-block({imgName: 'product2.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+                  +product-block({imgName: 'product5.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+    // ./Feature product
+    // News product
+    section.news-product.pb-4
+      .container
+        .product-header.d-flex.justify-content-between.flex-column.flex-lg-row
+          +title({icon: 'th-large', text: 'sản phẩm mới'})
+          ul.nav.nav-pills.mr-5.pr-5.mb-4.mb-lg-0
+            li.nav-item.mr-2
+              a(href="#tab1", class="nav-link active border rounded-0", title="", data-toggle="pill") Máy khoan
+            //- li.nav-item.mr-2
+            //-   a(href="#tab2", class="nav-link border rounded-0", title="", data-toggle="pill") Máy khoan2
+            each item in ['Máy in 3D', 'Máy CNC', 'Máy tiện', 'Máy khác']
+              li.nav-item.mr-2
+                a(href="#", class="nav-link border rounded-0 mb-2 mb-md-0", title="")= item
+        .tab-content
+          div(class="tab-panel fade show active", id="tab1")
+            .owl-carousel#news-product
+              .item
+                +product-block({imgName: 'product7.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+              .item
+                +product-block({imgName: 'product8.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+              .item
+                +product-block({imgName: 'product9.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+              .item
+                +product-block({imgName: 'product8.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          //- div(class="tab-panel fade", id="tab2")
+          //-   .owl-carousel
+          //-     .item
+          //-       +product-block({imgName: 'product7.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          //-     .item
+          //-       +product-block({imgName: 'product8.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          //-     .item
+          //-       +product-block({imgName: 'product9.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          //-     .item
+          //-       +product-block({imgName: 'product8.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+    // ./News product
+    // Banner
+    section.banner.d-none.d-md-block
+      .container
+        .row
+          .col-lg-6.mb-4.mb-lg-0.wow.slideInLeft&attributes({'data-wow-duration':'1.2s', 'data-wow-delay': '0.5s'})
+            +banner({imgName: 'banner2.jpg', heading: 'DEMISHI', subHeading: 'MÁY HÀN XÌ CHUYÊN NGHIỆP', text: 'CƠ HỘI TRÚNG NGAY TIVI SAMSUNG LCD TRỊ GIÁ ', price: '2.250.000', priceSale: '2.700.000', sale: '12%'})
+          .col-lg-6.wow.slideInRight&attributes({'data-wow-duration':'1.2s', 'data-wow-delay': '0.5s'})
+            +banner({imgName: 'banner1.jpg', heading: 'MAKITA', subHeading: 'MÁY KHOAN - CẮT ĐA NĂNG', text: 'TẶNG NGAY 1 BỘ PHỤ KIỆN CAO CẤP TRỊ GIÁ', price: '7.450.000', priceSale: '600.000', sale: '25%'})
+    // ./Banner
+    // selling products
+    section.selling-products.my-5
+      .container
+        .product-header.d-flex.justify-content-between.flex-column.flex-lg-row
+          +title({icon: 'th-large', text: 'sản phẩm bán chạy'})
+          ul.nav.nav-pills.mr-5.pr-5.mb-4.mb-lg-0
+            li.nav-item.mr-2
+                  a(href="#", class="nav-link active border rounded-0", title="") Máy khoan
+            each item in ['Máy in 3D', 'Máy CNC', 'Máy tiện', 'Máy khác']
+              li.nav-item.mr-2
+                a(href="#", class="nav-link border rounded-0 mb-2 mb-md-0", title="")= item
+        .owl-carousel#selling-product
+          div(class="item", style="width:260px")
+            +product-block({imgName: 'product4.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+            +product-block({imgName: 'product3.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          div(class="item", style="width:560px")
+            +product-block({imgName: 'product-larger.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          div(class="item", style="width:260px")
+            +product-block({imgName: 'product6.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+            +product-block({imgName: 'product5.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          div(class="item", style="width:560px")
+            +product-block({imgName: 'product-larger.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          div(class="item", style="width:260px")
+            +product-block({imgName: 'product2.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+            +product-block({imgName: 'product1.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          div(class="item", style="width:560px")
+            +product-block({imgName: 'product-larger.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+    // ./selling products
+    // Banner full
+    section.banner-full.d-none.d-lg-block
+      .container
+        .row
+          .col-md-6
+          .col-md-6 
+            .banner-full__content.text-center.mx-auto
+              h2 ROCKET WOKARU
+              p.mx-auto 
+                | Máy cắt, khoan đa năng tích hợp điều khiển từ xa loại nhỏ
+                | thích hợp với các hộ gia đình
+              a(href="#", title="mua ngay") mua ngay
+              a(href="#", title="chi tiết") chi tiết
+    // ./Banner full
+    // News product list
+    section.news-product-list.py-5.mb-5
+      .container
+        +title({icon: 'th-large', text: 'hàng mới về'})
+        .owl-carousel#news-product-list
+          .item
+            +product-block({productList: 'true', imgName: 'product-list1.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+            +product-block({productList: 'true', imgName: 'product-list2.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+          .item
+            +product-block({productList: 'true', imgName: 'product-list4.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+            +product-block({productList: 'true', imgName: 'product-list3.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+          .item
+            +product-block({productList: 'true', imgName: 'product-list5.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+            +product-block({productList: 'true', imgName: 'product-list6.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+          .item
+            +product-block({productList: 'true', imgName: 'product-list8.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+            +product-block({productList: 'true', imgName: 'product-list7.jpg', price: '2.350.000', title: 'máy khoan black decker',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'})
+    // ./News product list
+    // Brand
+    section.brand
+      .container
+        .owl-carousel#brand
+          .item
+            a(href="#", title="brand")
+              img(src="images/brand1.png", alt="brand")
+          .item
+            a(href="#", title="brand")
+              img(src="images/brand2.png", alt="brand")
+          .item
+            a(href="#", title="brand")
+              img(src="images/brand3.png", alt="brand")
+          .item
+            a(href="#", title="brand")
+              img(src="images/brand4.png", alt="brand")
+          .item
+            a(href="#", title="brand")
+              img(src="images/brand5.png", alt="brand")
+          .item
+            a(href="#", title="brand")
+              img(src="images/brand2.png", alt="brand")
+    // ./Brand
+    // Newsletter
+    section.newsletter
+      .container
+        .row
+          .col
+            .newsletter__content.mx-auto
+              h3.text-center.mb-4 Đăng kí để nhận tin tức khuyến mại hàng tuần
+              form(action="#", class="form-inline justify-content-center")
+                input(type="text", class="form-control", placeholder="Nhập email của bạn...")
+                button(type="submit", class="btn ml-0 ml-lg-2 mt-3 mt-lg-0") ĐĂNG KÝ
+  // ./Newsletter
+block footer
+  +footer()

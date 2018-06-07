@@ -1,0 +1,110 @@
+mixin footer()
+  //Footer
+  footer
+    .site-footer
+      .container
+        .row.d-flex.justify-content-between
+          .col-md-12.col-xl-3.mb-3.mb-xl-0
+            .site-footer__about
+              +title({icon: 'th-large', text: 'Về chúng tôi'})
+              p.mb-3.mb-md-4
+                | Công ty Cổ phẩn Công nghệ DKT đã và đang khẳng định được vị trí hàng đầu trong lĩnh vực 
+                | Thương mại điện tử. 
+              .media.mb-2.mb-md-3
+                i.fa.fa-map-marker.mr-2.align-self-start
+                .media-body
+                  p Tầng 4 - Tòa nhà Hanoi Group 442 Đội Cấn Ba Đình - Hà Nội
+              .media.mb-2.mb-md-3
+                i.fa.fa-envelope.mr-2.align-self-start
+                .media-body
+                  p support@dkt.com.vn
+              .media.mb-2.mb-md-3
+                i.fa.fa-phone.mr-2.align-self-start
+                .media-body
+                  p (84-4) 66558868 - (84-4) 37868904
+          .col-md-9.pl-3.pl-xl-5
+            .row
+              .col-md-6.col-xl-3.mb-3.mb-xl-0
+                .site-footer__menu
+                  +title({icon: 'th-large', text: 'Chính sách'})
+                  +footer-menu(
+                    'Chính sách giao hàng',
+                    'Chính sách đổi sản phẩm',
+                    'Chính sách bảo hành',
+                    'Chính sách trả góp',
+                    'Giới thiệu hàng đổi trả',
+                    'Vận chuyển miễn phí'
+                  )
+              .col-md-6.col-xl-3.mb-3.mb-xl-0
+                .site-footer__menu
+                  +title({icon: 'th-large', text: 'Dịch vụ & hỗ trợ'})
+                  +footer-menu(
+                    'Hệ thống cửa hàng',
+                    'Hướng dẫn mua hàng',
+                    'Hướng dẫn thanh toán',
+                    'Tích điểm đổi thưởng',
+                    'Dịch vụ đổi trả hàng',
+                    'Câu hỏi thường gặp'
+                  )
+              .col-md-6.col-xl-3.mb-3.mb-xl-0
+                .site-footer__menu
+                  +title({icon: 'th-large', text: 'Tin tức & sự kiện'})
+                  +footer-menu(
+                    'Tin tức mới nhất',
+                    'Tin tức khuyến mại',
+                    'Tuyển dụng, đãi ngộ',
+                    'Download tài liệu',
+                    'Chương trình đối tác',
+                    'Nhà phát triển ứng dụng'
+                  )
+              .col-md-6.col-xl-3
+                +title({icon: 'th-large', text: 'Kết nối'})
+                +social-footer({Facebook:'facebook', Twitter: 'twitter', Google: 'google-plus', Skype: 'skype', Instagram: 'instagram'})
+        hr.mb-4.mt-4
+        .row
+          .col-sm-6
+            .site-footer__payment
+              p.mb-3 Thanh toán:
+              a(href="#", title="")
+                img(src="images/payment1.jpg", alt="payment", class="mr-2 mb-2")
+              a(href="#", title="")
+                img(src="images/payment2.jpg", alt="payment", class="mr-2 mb-2")
+              a(href="#", title="")
+                img(src="images/payment3.jpg", alt="payment", class="mr-2 mb-2")
+              a(href="#", title="")
+                img(src="images/payment4.jpg", alt="payment", class="mb-2 mr-2 mr-xl-0")
+              a(href="#", title="")
+                img(src="images/payment5.jpg", alt="payment", class="mr-2 mb-2 mb-xl-0")
+              a(href="#", title="")
+                img(src="images/payment6.jpg", alt="payment", class="mr-2 mb-2 mb-xl-0")
+              a(href="#", title="")
+                img(src="images/payment7.jpg", alt="payment", class="mr-2")
+              a(href="#", title="")
+                img(src="images/payment8.jpg", alt="payment", class="")
+          .col-sm-6
+            p.mb-4.mt-4.mt-md-0.pb-1 Giải đáp nhanh:
+            .site-footer__reply.d-flex.align-items-left.align-items-xl-center.flex-column.flex-xl-row
+              .media.mb-3.mb-xl-0.w-100
+                i.fa.fa-phone.float-left.mr-2.align-self-center
+                .media-body
+                  p Tư vấn miễn phí (24/7)
+                  span.pl-0.pl-xl-3 1900 650 650
+              .media.ml-0.ml-xl-auto.w-100
+                i.fa.fa-comments.float-left.mr-2.align-self-center
+                .media-body
+                  p Góp ý - phản hồi - thắc mắc
+                  span 1900 650 650
+    .copy-right
+      .container
+        .row
+          .col-xl-6.wow.fadeInLeft
+            .copy-right__left
+              p.mb-3.mb-xl-0.text-center.text-xl-left Bản quyền thuộc về #[a(href="#", title="") Design Team]. Phát triển bởi #[a(href="#", title="") Bizweb.]
+          .col-xl-6.wow.fadeInRight
+            .copy-right__right.text-center.text-xl-right
+              ul.list-inline.list-unstyled
+                each item in ['Trang chủ', 'Giới thiệu', 'Sản phẩm', 'Tin khuyến mại', 'Dịch vụ', 'Liên hệ']
+                  li.list-inline-item
+                    a(href="#", title="")= item
+  //./Footer
+  script(src='js/main.js')

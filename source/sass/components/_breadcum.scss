@@ -1,0 +1,22 @@
+.breadcum {
+  font-family: $font-family-arial;
+
+  li {
+    color: $mine-shaft3;
+
+    +li {
+      //scss-lint:disable NestingDepth
+      &::before {
+        color: $gray;
+        content: '\f0da';
+        display: inline-block;
+        font-family: 'FontAwesome';
+        padding-right: 8px;
+      }
+    }
+
+    a {
+      color: $gray;
+    }
+  }
+}

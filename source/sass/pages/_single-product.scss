@@ -1,0 +1,134 @@
+//scss-lint:disable NestingDepth, SelectorDepth
+.single-product {
+  &__detail {
+    .rating {
+      .list-inline-item:last-child {
+        a {
+          color: $mine-shaft3;
+          display: inline-block;
+          margin-left: 5px;
+          text-decoration: underline;
+        }
+      }
+    }
+//scss-lint:disable SelectorFormat
+    .product__price {
+      @include font-size(22px);
+    }
+
+    h5,
+    label {
+      color: $mine-shaft3;
+      font-weight: $font-weight-medium;
+    }
+
+    h5 {
+      @include font-size(14px);
+      text-transform: inherit;
+    }
+}
+
+  &__quantity {
+    a {
+      @include font-size(12px);
+      background-color: $primary;
+      color: $white;
+      display: inline-block;
+      padding: 12px 27px;
+      text-transform: uppercase;
+    }
+
+    input {
+      min-height: 40px;
+      padding-right: 0;
+      text-align: center;
+    }
+
+  }
+
+  &__social {
+    .list-inline-item:not(:nth-child(3)) {
+      a {
+        @include font-size(12px);
+        border-radius: 3px;
+        color: $white;
+        font-weight: $font-weight-medium;
+        padding: 4px 10px;
+      }
+    }
+
+    .list-inline-item:first-child {
+      a {
+        background: $indigo;
+      }
+    }
+
+    .list-inline-item:nth-child(2) {
+      a {
+        background: $curious-blue;
+      }
+    }
+
+    .list-inline-item:nth-child(3) {
+      a {
+        border: 1px solid $gray;
+        color: $flame-pea;
+        padding: 1px 3px;
+      }
+    }
+
+    .list-inline-item:last-child {
+      a {
+        background: $persimmon;
+      }
+    }
+
+    span {
+      @include box(22px, 22px);
+      border: 1px solid $gray;
+      display: inline-block;
+      position: relative;
+      text-align: center;
+
+      &::before {
+        border-bottom: 5px solid transparent;
+        border-right: 5px solid $gray;
+        border-top: 5px solid transparent;
+        content: '';
+        height: 0;
+        left: -5px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  &-tabs {
+    .nav-link {
+      color: $mine-shaft3;
+      font-weight: $font-weight-medium;
+      margin-right: -1px;
+      padding: 14px 40px;
+      text-transform: uppercase;
+
+      &.active,
+      &:hover {
+        background-color: $secondary;
+        border-color: $secondary;
+        color: $primary;
+      }
+    }
+
+    .tab-content {
+      margin-top: -1px;
+      padding: 20px 30px 50px;
+
+      @include media-breakpoint-down(md) {
+        padding: 10px 20px 30px;
+      }
+    }
+  }
+}

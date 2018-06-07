@@ -1,0 +1,86 @@
+// scss-lint:disable NestingDepth
+.banner {
+  &__item {
+    overflow: hidden;
+    position: relative;
+
+    @include media-breakpoint-down (md) {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  &__content {
+    left: 0;
+    padding: 50px 30px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    h2 {
+      @include font-size(48px);
+      font-weight: $font-weight-black;
+      margin-bottom: 0;
+    }
+
+    h5 {
+      @include font-size(14px);
+      color: $dove-gray;
+      font-weight: $font-weight-medium;
+    }
+
+    p {
+      color: $secondary;
+      font-style: italic;
+      font-weight: $font-weight-medium;
+      width: 58%;
+
+      em {
+        color: $red;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .price {
+      @include font-size(24px);
+      background-color: $primary;
+      color: $secondary;
+      display: inline-block;
+      font-weight: $font-weight-bold;
+      letter-spacing: .5px;
+      margin: 5px 0 12px;
+      padding: 5px 35px;
+    }
+
+    .sale-off {
+      @include box(85px, 85px, 24px);
+      @include font-size(18px);
+      background-color: $primary;
+      border-radius: 50%;
+      color: $white;
+      font-weight: $font-weight-light;
+      padding: 20px 15px;
+      position: absolute;
+      right: 15px;
+      text-align: center;
+      top: 20px;
+
+      &::after {
+        @include box(75px, 75px);
+        border: 1px solid $white;
+        border-radius: 50%;
+        content: '';
+        display: block;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
+
+      b {
+        @include font-size(24px);
+        font-weight: $font-weight-black;
+      }
+    }
+  }
+}

@@ -1,0 +1,222 @@
+// Base Styles
+
+body {
+  @include text(.875rem, $line-height-base, $font-weight-base, $gray);
+  font-family: $font-family-roboto;
+}
+
+main {
+  overflow-x: hidden;
+  position: relative;
+}
+
+html {
+  font-size: 1rem;
+
+  @include media-breakpoint-down (sm) {
+    font-size: .875rem;
+  }
+}
+
+ul,
+h3,
+p,
+form,
+.form-control {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:hover,
+a:focus {
+  @include transition(all .3s ease);
+  text-decoration: none;
+}
+
+a:hover {
+  color: $primary;
+}
+
+h1,
+h2,
+h3,
+h3,
+h4,
+h5,
+h6 {
+  color: $black;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+}
+
+input,
+button,
+.form-control,
+.btn {
+  @include font-size(14px);
+  border-radius: 0;
+  padding: 10px 15px;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+::placeholder {
+  @include font-size(12px);
+}
+
+.page-heading {
+  margin-bottom: 40px;
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    @include font-size(18px);
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
+
+  i {
+    color: $primary;
+  }
+}
+//scss-lint:disable ImportantRule
+.card-header:first-child,
+.list-group-item:first-child,
+.list-group:last-child .list-group-item:last-child {
+  border-radius: 0 !important;
+}
+
+.rating {
+  .list-inline-item {
+    margin-right: 0;
+
+    em {
+      margin-left: 5px;
+    }
+  }
+
+  a {
+    color: $primary;
+  }
+
+  a,
+  em {
+    @include font-size(12px);
+  }
+}
+
+.sidebar {
+  .list-group-item {
+    padding: 20px;
+  }
+
+  .list-group-item:hover,
+  .list-group-item.active {
+    cursor: pointer;
+
+    a {
+      color: $primary;
+    }
+  }
+
+  a {
+    color: $gray;
+  }
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: $primary;
+}
+
+@include media-breakpoint-down (md) {
+  .navbar-nav {
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+.navbar {
+  padding: 0;
+
+  @include media-breakpoint-down(md) {
+    padding: 10px 0;
+  }
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: $primary;
+}
+
+.navbar-toggler {
+  background-color: $primary;
+}
+
+input {
+  min-height: 50px;
+
+  @include media-breakpoint-down(md) {
+    min-height: 40px;
+  }
+}
+
+.nav-pills {
+  margin-top: -10px;
+}
+
+.owl-nav {
+  position: absolute;
+  right: 0;
+  top: -18%;
+
+  .fa {
+    @include font-size(14px);
+    @include box(32px, 32px, 32px);
+    @include transition(all .3s ease);
+
+    border: 1px solid $gray;
+
+    &:hover {
+      background-color: $secondary;
+      border-color: $secondary;
+      color: $white;
+    }
+
+    &-caret-left {
+      margin-right: 7px;
+    }
+  }
+}
+
+.custom-select {
+  background: $white url('../images/caret-down.jpg') no-repeat right .5rem center;
+  border-radius: 0;
+  color: $gray;
+}
+
+// scss-lint:disable ImportantRule
+.owl-stage-outer {
+  overflow: visible !important;
+}
+
+.owl-item {
+  opacity: 0;
+  visibility: hidden;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: inherit !important;
+  }
+ }
