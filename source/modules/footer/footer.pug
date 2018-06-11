@@ -59,7 +59,13 @@ mixin footer()
                   )
               .col-md-6.col-xl-3
                 +title({icon: 'th-large', text: 'Kết nối'})
-                +social-footer({Facebook:'facebook', Twitter: 'twitter', Google: 'google-plus', Skype: 'skype', Instagram: 'instagram'})
+                +social-footer({
+                  Facebook:'facebook', 
+                  Twitter: 'twitter', 
+                  Google: 'google-plus', 
+                  Skype: 'skype', 
+                  Instagram: 'instagram'
+                })
         hr.mb-4.mt-4
         .row
           .col-sm-6
@@ -80,7 +86,7 @@ mixin footer()
               a(href="#", title="")
                 img(src="images/payment7.jpg", alt="payment", class="mr-2")
               a(href="#", title="")
-                img(src="images/payment8.jpg", alt="payment", class="")
+                img(src="images/payment8.jpg", alt="payment")
           .col-sm-6
             p.mb-4.mt-4.mt-md-0.pb-1 Giải đáp nhanh:
             .site-footer__reply.d-flex.align-items-left.align-items-xl-center.flex-column.flex-xl-row
@@ -99,11 +105,13 @@ mixin footer()
         .row
           .col-xl-6.wow.fadeInLeft
             .copy-right__left
-              p.mb-3.mb-xl-0.text-center.text-xl-left Bản quyền thuộc về #[a(href="#", title="") Design Team]. Phát triển bởi #[a(href="#", title="") Bizweb.]
+              p.mb-3.mb-xl-0.text-center.text-xl-left 
+              | Bản quyền thuộc về #[a(href="#", title="") Design Team]. Phát triển bởi #[a(href="#", title="") Bizweb.]
           .col-xl-6.wow.fadeInRight
             .copy-right__right.text-center.text-xl-right
+              - var footerMenu = ['Trang chủ', 'Giới thiệu', 'Sản phẩm', 'Tin khuyến mại', 'Dịch vụ', 'Liên hệ']
               ul.list-inline.list-unstyled
-                each item in ['Trang chủ', 'Giới thiệu', 'Sản phẩm', 'Tin khuyến mại', 'Dịch vụ', 'Liên hệ']
+                each item in footerMenu
                   li.list-inline-item
                     a(href="#", title="")= item
   //./Footer
