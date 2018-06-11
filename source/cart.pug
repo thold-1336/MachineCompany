@@ -1,9 +1,8 @@
 extends layout/layout
 block head
   +head("Giỏ hàng")
-block header
-  +header
 block content
+  +header
   main
     .page-cart
       .container
@@ -74,5 +73,4 @@ block content
             .cart-action.text-right
               a(href="product.html", title="") tiếp tục mua hàng
               a(href="#", title="") thanh toán
-block footer
   +footer()

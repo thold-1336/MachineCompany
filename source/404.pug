@@ -1,9 +1,8 @@
 extends layout/layout
 block head
   +head("404")
-block header
-  +header
 block content
+  +header
   main
     .page-404
       .container
@@ -15,5 +14,4 @@ block content
             a(href="index.html") TRANG CHỦ
           .col-md-4.mt-5.mt-md-0
             img(src="images/404.jpg", alt="404", class="img-fluid")
-block footer
   +footer()

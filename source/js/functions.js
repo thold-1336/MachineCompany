@@ -1,5 +1,18 @@
 $(document).ready(function () {
+  // menu active
+  
+  $(".navbar-nav > .nav-item").on("click", function(event){
+    $(".navbar-nav").find(".active").removeClass("active");
+    $(this).addClass("active");
+  });
+
+  $.each($('.navbar-nav').find('.nav-item'), function() {
+    $(this).toggleClass('active', 
+      window.location.pathname.indexOf($(this).find('.nav-link').attr('href')) > -1);
+}); 
+
   // setting owl-carousel library
+
   $('#register-form, #login-form').validate(
     {
       rules: {

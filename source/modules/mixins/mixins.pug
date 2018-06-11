@@ -1,3 +1,4 @@
+
 mixin social-header(...data)
   ul.list-unstyled.list-inline
     each item in data
@@ -28,33 +29,103 @@ mixin breadcum(data)
         a(href="index.html", title="home") Trang chủ
       li.list-inline-item= data.title
 
-mixin dropdown-menu()
-  ul.list-unstyled.shadow.sub-menu
-    li.nav-item
-      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Giới thiệu chung
-    li.nav-item
-      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng
-      ul.list-unstyled.shadow.second-menu
-        li.nav-item
-          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A
-        li.nav-item
-          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A1
-        li.nav-item
-          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A2
-        li.nav-item
-          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Hệ thống cửa hàng A3
-    li.nav-item
-      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Chính sách ưu đãi
-    li.nav-item
-      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Thông tin tuyển dụng
+mixin menu()
+  - 
+    var menu = [
+      {
+        text: 'Trang chủ',
+        href: 'index.html',
+        active: true
+      },
+      {
+        text: 'Giới thiệu',
+        subMenu: [
+          {
+            text: 'Giới thiệu chung'
+          }, 
+          {
+            text: 'Hệ thống cửa hàng',
+            secondMenu: [
+              {text: 'Hệ thống cửa hàng A'}, 
+              {text: 'Hệ thống cửa hàng A1'}, 
+              {text: 'Hệ thống cửa hàng A2'}, 
+              {text: 'Hệ thống cửa hàng A3'}
+            ]
+          }, 
+          {
+            text: 'Chính sách ưu đãi'
+          }, 
+          {
+            text: 'Thông tin tuyển dụng'
+          }
+        ]
+      },
+      {
+        text: 'Sản phẩm',
+        href: 'product.html',
+        mega: true,
+        desktop: true
+      },
+      {
+        text: 'Sản phẩm',
+        href: 'product.html',
+        mobile: true
+      },
+      {
+        text: 'Tin khuyến mại',
+      },
+      {
+        text: 'Dịch vụ'
+      },
+      {
+        text: 'Liên hệ'
+      }
+    ];
+  nav(class="navbar navbar-expand-lg navbar-dark")
+    button(
+      class="navbar-toggler" 
+      type="button" 
+      data-toggle="collapse" 
+      data-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+      )
+        span(class="navbar-toggler-icon")
+    div(class="collapse navbar-collapse" id="navbarSupportedContent")
+      ul(class="navbar-nav menu__main")
+        each item in menu
+          if item.mobile
+            li(class="nav-item d-inline-block d-lg-none")
+              a(class="nav-link", href=".mega-menu-mobile", title="", data-toggle="collapse")=item.text
+                i.fa.fa-caret-down
+              +mega-menu-mobile()
+          else
+            li(class=item.active ? 'nav-item active' : 'nav-item', class=item.desktop ? 'd-none d-lg-inline-block' : '')
+              if item.href
+                a(class="nav-link", href=item.href, title="")=item.text
+              else
+                a(class="nav-link", href="#", title="")=item.text
+              if item.mega
+                +mega-menu()
+              if item.subMenu
+                ul.list-unstyled.shadow.sub-menu
+                  each sub in item.subMenu
+                    li.nav-item
+                      a(href="#", title="") #[i.fa.fa-caret-right.mr-1] #{sub.text}
+                      if sub.secondMenu
+                        ul.list-unstyled.shadow.second-menu
+                          each second in sub.secondMenu
+                            li.nav-item
+                              a(href="#", title="") #[i.fa.fa-caret-right.mr-1] #{second.text}
 
-mixin slider-promo(icon, heading, text)
+mixin slider-promo(data)
   .slider__promo.mb-3.mb-xl-0
     .media.border.slider__content
-      i(class="align-self-center mr-4 float-left fa fa-" + icon)
+      i(class="align-self-center mr-4 float-left fa fa-" + data.icon)
       .media-body
-        h6=heading
-        p=text
+        h6=data.heading
+        p=data.text
 
 mixin sidebar-category(...data)
   ul.list-group.shadow
@@ -125,21 +196,10 @@ mixin product-block(data)
         h3.product__title.my-2
           a(href="single-product.html", title="")= data.title
         ul.list-inline.list-unstyled.rating
-          li.list-inline-item
-            a(href="#", title="rating")
-              i.fa.fa-star
-          li.list-inline-item
-            a(href="#", title="rating")
-              i.fa.fa-star
-          li.list-inline-item
-            a(href="#", title="rating")
-              i.fa.fa-star
-          li.list-inline-item
-            a(href="#", title="rating")
-              i.fa.fa-star
-          li.list-inline-item
-            a(href="#", title="rating")
-              i.fa.fa-star-o
+          - for (let x = 0; x < 5; x++)
+            li.list-inline-item
+              a(href="#", title="rating")
+                i(class= x===4 ? 'fa fa-star-o' : 'fa fa-star')
           li.list-inline-item
             em (12 đánh giá)
       .product__action.text-center.pb-4.mt-2
@@ -161,151 +221,168 @@ mixin product-color(...data)
         li.list-group-item
           a(href="", title="") #[span.mr-1] #{item} 
           
-mixin mega-menu-item(...data)
-  ul.list-unstyled
-    each item in data
-      li.nav-item
-        a(href="product.html", title="") #[i.fa.fa-caret-right.mr-3] #{item}
-
 mixin mega-menu()
+  - 
+    var megaItem = [
+      {
+        icon: 'th-large', 
+        text: 'MÁY KHOAN ĐA NĂNG CNC',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY CẮT PLASMAR',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY PHAY CÔNG NGHIỆP',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY ÉP NHỰA THỦ CÔNG',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY UỐNG TÔN ĐIỆN',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY NÉN KHÍ CNC',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      }
+    ]
   .mega-menu.shadow.d-none.d-lg-block
     .row
       .col-sm-9
         .row
-          .col-sm-4
-            .mega-menu___item
-              +title({icon:"th-large", text: 'MÁY KHOAN ĐA NĂNG CNC'})
-              +mega-menu-item(
-                'Máy khoan CNC điện',
-                'Máy phay đa năng 3R',
-                'Máy hàn, cắt kim loại',
-                'Máy in phun tích điện',
-                'Máy ép gỗ chuẩn Nano'
-              )
-          .col-sm-4
-            .mega-menu___item
-              +title({icon:"th-large", text: 'MÁY CẮT PLASMAR'})
-              +mega-menu-item(
-                'Máy khoan CNC điện',
-                'Máy phay đa năng 3R',
-                'Máy hàn, cắt kim loại',
-                'Máy in phun tích điện',
-                'Máy ép gỗ chuẩn Nano'
-              )
-          .col-sm-4
-            .mega-menu___item
-              +title({icon:"th-large", text: 'MÁY PHAY CÔNG NGHIỆP'})
-              +mega-menu-item(
-                'Máy khoan CNC điện',
-                'Máy phay đa năng 3R',
-                'Máy hàn, cắt kim loại',
-                'Máy in phun tích điện',
-                'Máy ép gỗ chuẩn Nano'
-              )
-        .row.mt-4
-          .col-sm-4
-            .mega-menu___item
-              +title({icon:"th-large", text: 'MÁY ÉP NHỰA THỦ CÔNG'})
-              +mega-menu-item(
-                'Máy khoan CNC điện',
-                'Máy phay đa năng 3R',
-                'Máy hàn, cắt kim loại',
-                'Máy in phun tích điện'
-              )
-          .col-sm-4
-            .mega-menu___item
-              +title({icon:"th-large", text: 'MÁY UỐNG TÔN ĐIỆN'})
-              +mega-menu-item(
-                'Máy khoan CNC điện',
-                'Máy phay đa năng 3R',
-                'Máy hàn, cắt kim loại',
-                'Máy in phun tích điện'
-              )
-          .col-sm-4
-            .mega-menu___item
-              +title({icon:"th-large", text: 'MÁY NÉN KHÍ CNC'})
-              +mega-menu-item(
-                'Máy khoan CNC điện',
-                'Máy phay đa năng 3R',
-                'Máy hàn, cắt kim loại',
-                'Máy in phun tích điện'
-              )
+          each item in megaItem
+            .col-sm-4
+              .mega-menu__item
+                +title({icon: item.icon, text:item.text})
+                if item.megaArr
+                  ul.list-unstyled
+                    each arr in item.megaArr
+                      li.nav-item
+                        a(href="product.html", title="") #[i.fa.fa-caret-right.mr-3] #{arr}
       .col-sm-3.pl-1.pb-3
         .mega-menu___img
           img(src="images/mega-menu-img.jpg", alt="mega img", class="img-fluid")
 
 mixin mega-menu-mobile()
+  - 
+    var megaMobile = [
+      {
+        text: 'Máy khoan đa năng CNC',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        text: 'Máy cắt Plasmar',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        text: 'Máy phay công nghiệp',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        text: 'Máy ép nhựa thủ công',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        text: 'Máy uống tôn điện',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        text: 'Máy nén khí CNC',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      }
+    ]
   .mega-menu-mobile.collapse
     ul.list-unstyled.shadow.sub-menu
-      li.nav-item
-        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan đa năng CNC
-        ul.list-unstyled.shadow.second-menu
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép gỗ chuẩn Nano
-      li.nav-item
-        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy cắt Plasmar
-        ul.list-unstyled.shadow.second-menu
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép gỗ chuẩn Nano
-      li.nav-item
-        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay công nghiệp
-        ul.list-unstyled.shadow.second-menu
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép gỗ chuẩn Nano
-      li.nav-item
-        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy ép nhựa thủ công
-        ul.list-unstyled.shadow.second-menu
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
-      li.nav-item
-        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy uốn tôn điện
-        ul.list-unstyled.shadow.second-menu
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
-      li.nav-item
-        a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy nén khí CNC
-        ul.list-unstyled.shadow.second-menu
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy khoan CNC điện
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy phay đa năng 3R
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy hàn, cắt kim loại
-          li.nav-item
-            a(href="#", title="") #[i.fa.fa-caret-right.mr-1] Máy in phun tích điện
+      each item in megaMobile
+        li.nav-item
+          a(href="#", title="") #[i.fa.fa-caret-right.mr-1] #{item.text}
+          if item.subMenu
+            ul.list-unstyled.shadow.second-menu
+              each sub in item.subMenu
+                li.nav-item
+                  a(href="#", title="") #[i.fa.fa-caret-right.mr-1] #{sub}
+
+mixin pagination(page)
+  ul.pagination.justify-content-center.justify-content-sm-end.mb-4.mb-xl-0.mt-0.mt-xl-5.pt-3
+    li.page-item
+      a(href="#", class="page-link") Trang trước
+    - for (let x = 1; x < page; x++)
+      li.page-item(class=x===1 ? 'active' : '')
+        a(href="#", class="page-link")= x
+    li.page-item
+      a(href="#", class="page-link") Trang cuối
