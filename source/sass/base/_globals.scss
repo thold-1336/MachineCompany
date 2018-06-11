@@ -5,11 +5,6 @@ body {
   font-family: $font-family-roboto;
 }
 
-main {
-  overflow-x: hidden;
-  position: relative;
-}
-
 html {
   font-size: 1rem;
 
@@ -200,23 +195,27 @@ input {
   color: $gray;
 }
 
-// scss-lint:disable ImportantRule
 .owl-stage-outer {
-  overflow: visible !important;
+  margin-left: -4px;
+  margin-top: -5px;
+  padding: 5px 2px;
 }
 
 .owl-item {
-  opacity: 0;
-  visibility: hidden;
-
-  &.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
   img {
     display: block;
     margin: 0 auto;
     width: inherit !important;
   }
- }
+}
+
+.carousel-indicators li {
+  background-color: rgba($mine-shaft3, .5);
+  height: 10px;
+  width: 10px;
+
+  &.active {
+    background-color: $mine-shaft3;
+  }
+}
+
