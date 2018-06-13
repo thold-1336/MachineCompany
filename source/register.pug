@@ -1,9 +1,8 @@
 extends layout/layout
 block head
   +head("Đăng ký")
-block header
-  +header
 block content
+  +header
   main
     .page-register
       .container
@@ -41,6 +40,5 @@ block content
                     input(type="email", class="form-control", id="txtEmail", name="txtEmail")
                 a(href="login.html", title="login") QUAY LẠI
                 button(type="submit", class="btn ml-1") ĐĂNG KÝ
-
-block footer
   +footer()
+
