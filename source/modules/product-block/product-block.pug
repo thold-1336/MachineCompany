@@ -1,0 +1,45 @@
+mixin product-block(data)
+  if data.productList
+    .media.product.product-list.d-flex.flex-column.flex-md-row.wow.fadeInUp&attributes({'data-wow-duration':'1.2s', 'data-wow-delay': '0.5s'})
+      .product__img.text-center
+        a(href="single-product.html", title="")
+          img(src="images/" + data.imgName, alt="", class="img-fluid")
+      .media-body.ml-4
+        .product__caption
+          h3.product__title.my-2
+            a(href="single-product.html", title="")= data.title
+          ul.list-inline.list-unstyled.rating
+            - for (let x = 0; x < 4; x++)
+              li.list-inline-item
+                a(href="#", title="rating")
+                  i.fa.fa-star
+            li.list-inline-item
+                a(href="#", title="rating")
+                  i.fa.fa-star-o
+            li.list-inline-item
+              em (12 đánh giá)
+          p.py-2.text-justify.text-md-left= data.text
+        span.product__price= data.price + " Đ"
+        .product__action.py-3.pt-2
+          a(href="#", title="", class="mr-1 mb-2 mb-md-0") mua ngay
+          a(href="single-product.html", title="") xem chi tiết
+  else
+    .test.position-relative.product.wow
+      .zoomIn.shadow&attributes({'data-wow-duration':'1.2s', 'data-wow-delay': '0.5s'})
+        .product__img.text-center
+          a(href="single-product.html", title="")
+            img(src="images/" + data.imgName, alt="", class="img-fluid")
+        .product__caption.text-center.py-3.pb-md-5
+          span.product__price= data.price + " Đ"
+          h3.product__title.my-2
+            a(href="single-product.html", title="")= data.title
+          ul.list-inline.list-unstyled.rating
+            - for (let x = 0; x < 5; x++)
+              li.list-inline-item
+                a(href="#", title="rating")
+                  i(class= x===4 ? 'fa fa-star-o' : 'fa fa-star')
+            li.list-inline-item
+              em (12 đánh giá)
+        .product__action.text-center.pb-4.mt-2
+          a(href="#", title="", class="mr-1") mua ngay
+          a(href="single-product.html", title="") xem chi tiết

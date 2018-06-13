@@ -5,12 +5,9 @@ body {
   font-family: $font-family-roboto;
 }
 
+body,
 html {
-  font-size: 1rem;
-
-  @include media-breakpoint-down (sm) {
-    font-size: .875rem;
-  }
+  overflow-x: hidden;
 }
 
 ul,
@@ -147,10 +144,16 @@ button,
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   background-color: $primary;
+  border-color: $primary !important;
 }
 
 .navbar-toggler {
   background-color: $primary;
+
+  span {
+    color: $black;
+    padding: 3px;
+  }
 }
 
 input {
@@ -219,3 +222,39 @@ input {
   }
 }
 
+.dropdown-menu {
+  background-color: transparent;
+  border: 0;
+  font-size: .8rem;
+}
+
+// .tab-content > .tab-pane {
+//   display: block;
+//   height: 0;
+//   visibility: hidden;
+//   overflow:hidden;
+// }
+
+// .tab-content > .active {
+//   height: auto;
+//   visibility: visible;
+//   overflow: visible;
+// }
+
+@include media-breakpoint-down (sm) {
+  .item {
+    .product:last-child,
+    .product-list:last-child {
+      display: none !important;
+    }
+  }
+}
+
+.tab-content > .tab-pane {
+  display: block;
+  height: 0;
+}
+
+.tab-content > .active {
+  height: auto;
+}

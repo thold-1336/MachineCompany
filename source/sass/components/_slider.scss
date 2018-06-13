@@ -6,8 +6,12 @@
     margin-top: -1px;
     padding: 26.5px 30px;
 
+    @include media-breakpoint-down (sm) {
+      padding: 20px;
+    }
+
     p {
-      @include font-size(13px);
+    @include font-size(13px);
       font-family: $font-family-arial;
     }
 

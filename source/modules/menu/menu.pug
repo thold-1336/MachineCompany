@@ -1,0 +1,268 @@
+mixin menu()
+  - 
+    var menu = [
+      {
+        text: 'Trang chủ',
+        href: 'index.html',
+        active: true
+      },
+      {
+        text: 'Giới thiệu',
+        desktop: true,
+        subMenu: [
+          {
+            text: 'Giới thiệu chung'
+          }, 
+          {
+            text: 'Hệ thống cửa hàng',
+            secondMenu: [
+              {text: 'Hệ thống cửa hàng A'}, 
+              {text: 'Hệ thống cửa hàng A1'}, 
+              {text: 'Hệ thống cửa hàng A2'}, 
+              {text: 'Hệ thống cửa hàng A3'}
+            ]
+          }, 
+          {
+            text: 'Chính sách ưu đãi'
+          }, 
+          {
+            text: 'Thông tin tuyển dụng'
+          }
+        ]
+      },
+      {
+        text: 'Giới thiệu chung',
+        mobile: true
+      },
+      {
+        text: 'Sản phẩm',
+        href: 'product.html',
+        mega: true,
+        desktop: true,
+      },
+      {
+        text: 'Sản phẩm',
+        href: 'product.html',
+        mobile: true,
+        mega: true
+      },
+      {
+        text: 'Tin khuyến mại',
+      },
+      {
+        text: 'Dịch vụ'
+      },
+      {
+        text: 'Liên hệ'
+      }
+    ];
+  nav(class="navbar navbar-expand-lg navbar-dark")
+    button(
+      class="navbar-toggler" 
+      type="button" 
+      )
+        span(class="fa fa-bars")
+    div(class="push-menu")
+      ul(class="navbar-nav menu__main")
+        each item in menu
+          if item.mobile
+            li(class="nav-item d-block d-lg-none")
+              a(class="nav-link float-left", href=item.href, title="")=item.text
+              i.fa.fa-angle-down.pt-2.pl-5.float-right
+              if item.mega
+                +mega-menu-mobile()
+              else 
+                h1 aaa
+          else
+            li(class=item.active ? 'nav-item active' : 'nav-item', class=item.desktop ? 'd-none d-lg-inline-block  menu__hover' : '')
+              if item.href
+                a(class="nav-link", href=item.href, title="")=item.text
+              else
+                a(class="nav-link", href="#", title="")=item.text
+              if item.mega
+                +mega-menu()
+              if item.subMenu
+                ul.list-unstyled.shadow.sub-menu
+                  each sub in item.subMenu
+                    li.nav-item
+                      a(href="#", title="")=sub.text
+                      if sub.secondMenu
+                        ul.list-unstyled.shadow.second-menu
+                          each second in sub.secondMenu
+                            li.nav-item
+                              a(href="#", title="")=second.text
+    .menu__cart.ml-auto
+      a(class="nav-link", href="cart.html", title="")
+        span.badge 0
+        i.fa.fa-shopping-basket
+      ul.list-group.shadow.cart-content
+        - for(let x = 1; x < 4; x++)
+          li.list-group-item
+            .media
+              img(src="images/product-promo" + x + '.jpg', alt="", class="img-fluid")
+              .media-body.ml-3
+                a(href="single-product.html", title="") MÁY KHOAN BLACK DECKER
+                a(aria-hidden="true", class="close float-right rounded-circle border")
+                  i.fa.fa-times
+                span.product__price.d-block #[span.cart-quantity 1 x ] 1.250.000 Đ
+        li.list-group-item.text-right
+          p
+            span tổng tiền: 
+            span.product__price 4.560.000 Đ
+          a(href="#", title="thanh toán") thanh toán
+
+mixin mega-menu()
+  - 
+    var megaItem = [
+      {
+        icon: 'th-large', 
+        text: 'MÁY KHOAN ĐA NĂNG CNC',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY CẮT PLASMAR',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY PHAY CÔNG NGHIỆP',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY ÉP NHỰA THỦ CÔNG',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY UỐNG TÔN ĐIỆN',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        icon: 'th-large', 
+        text: 'MÁY NÉN KHÍ CNC',
+        megaArr: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      }
+    ]
+  .mega-menu.shadow.d-none.d-lg-block
+    .row
+      .col-sm-9
+        .row
+          each item in megaItem
+            .col-sm-4
+              .mega-menu__item
+                +title({icon: item.icon, text:item.text})
+                if item.megaArr
+                  ul.list-unstyled
+                    each arr in item.megaArr
+                      li.nav-item
+                        a(href="product.html", title="")=arr
+      .col-sm-3.pl-1.pb-3
+        .mega-menu___img
+          img(src="images/mega-menu-img.jpg", alt="mega img", class="img-fluid")
+
+mixin mega-menu-mobile()
+  - 
+    var megaMobile = [
+      {
+        text: 'Máy khoan đa năng CNC',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        text: 'Máy cắt Plasmar',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        text: 'Máy phay công nghiệp',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện',
+          'Máy ép gỗ chuẩn Nano'
+        ]
+      },
+      {
+        text: 'Máy ép nhựa thủ công',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        text: 'Máy uống tôn điện',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      },
+      {
+        text: 'Máy nén khí CNC',
+        subMenu: [
+          'Máy khoan CNC điện',
+          'Máy phay đa năng 3R',
+          'Máy hàn, cắt kim loại',
+          'Máy in phun tích điện'
+        ]
+      }
+    ]
+  ul.list-unstyled.shadow.sub-menu
+    each item in megaMobile
+      li.nav-item
+        a(href="product.html", title="", class="float-left")=item.text
+        i.fa.fa-angle-down.pt-2.pl-5.float-right
+        if item.subMenu
+          ul.list-unstyled.shadow.second-menu
+            each sub in item.subMenu
+              li.nav-item
+                a(href="product.html", title="")= sub

@@ -11,13 +11,23 @@
   z-index: 2;
 
   @include media-breakpoint-down(md) {
-    display: inline-block;
-    top: 30px;
+    @include transition(none);
+    background-color: transparent;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    top: 0;
+    opacity: 1;
+    visibility: visible;
     transform: translateY(0);
   }
 
   @include media-breakpoint-down(sm) {
     min-width: 160px;
+  }
+
+  a {
+    color: $white;
   }
 
   .nav-item {
@@ -31,6 +41,10 @@
     &:hover {
       @include transition(all .5s ease);
       background-color: $primary;
+
+      @include media-breakpoint-down(md) {
+        background-color: transparent;
+      }
 
       > a {
         color: $white;
@@ -60,17 +74,14 @@
   visibility: hidden;
   z-index: 10;
 
-  @include media-breakpoint-down (sm) {
-    left: 140px;
-    min-width: 160px;
+  @include media-breakpoint-down (md) {
+    @include transition(none);
+    left: 0;
     top: 0;
-  }
-}
-
-.mega-menu-mobile {
-  .sub-menu {
-    display: inline-block;
+    min-width: 100%;
+    display: block;
     position: relative;
-    top: 0;
+    overflow: hidden;
+    transform: translateY(0);
   }
 }

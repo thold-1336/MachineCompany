@@ -3,6 +3,8 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var runSequence = require('run-sequence');
+var minifyJS = require('gulp-minify');
+var minifyCSS = require('gulp-clean-css');
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var fs = require('fs');
@@ -164,6 +166,7 @@ gulp.task('compile-styles',['fonts', 'scss-lint'], function (cb) {
     includeContent: false,
     sourceRoot: source + '/sass'
   }))
+  // .pipe(minifyCSS())
   .pipe(gulp.dest(dest + '/css'))
   .pipe(browserSync.stream());
 });
@@ -227,6 +230,7 @@ gulp.task('compile-js', function() {
   }))
   .pipe($.include(options.include))
   // .pipe($.babel())
+  // .pipe(minifyJS())
   .pipe($.plumber.stop())
   .pipe(gulp.dest(dest + '/js'));
 });
