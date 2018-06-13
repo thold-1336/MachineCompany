@@ -49,24 +49,44 @@
 .feature-product {
   .owl-nav {
     top: -10%;
+
+    @include media-breakpoint-down (md) {
+      top: -7%;
+    }
   }
 }
 
 .news-product {
   .owl-nav {
     top: -15.5%;
+
+    @include media-breakpoint-down (sm) {
+      top: -57%;
+    }
   }
 }
 
 .selling-products {
   .owl-nav {
     top: -9%;
+
+    @include media-breakpoint-down (md) {
+      top: -7%;
+    }
+
+    @include media-breakpoint-down (sm) {
+      top: -33%;
+    }
   }
 }
 
 .news-product-list {
   .owl-nav {
     top: -13%;
+
+    @include media-breakpoint-down (sm) {
+      top: -6%;
+    }
   }
 }
 
