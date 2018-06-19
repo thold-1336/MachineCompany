@@ -1,17 +1,42 @@
 $(document).ready(function () {
   // menu active
   
-  $(".navbar-nav > .nav-item").on("click", function(event){
+  $(".navbar-nav .nav-link").on("click", function(event){
     $(".navbar-nav").find(".active").removeClass("active");
-    $(this).addClass("active");
+    $(this).parent().addClass("active");
   });
 
   $.each($('.navbar-nav').find('.nav-item'), function() {
     $(this).toggleClass('active', 
       window.location.pathname.indexOf($(this).find('.nav-link').attr('href')) > -1);
-}); 
+  }); 
 
+  $('.sub-menu, .second-menu').slideUp();
+
+  $(".menu__main i").on("click", function(e) {
+    $(this).next().slideToggle(600);
+    // console.log($(this).next(3))
+    // $('.menu__main > .sub-menu').slideToggle(600);
+  });
+
+  $('.navbar-toggler').click(function() {
+    $('.push-menu').toggleClass('active-menu');
+    $('.overlay-mobile').toggleClass('show-overlay');
+  })
+
+  $('.overlay-mobile').click(function() {
+    $('.push-menu').toggleClass('active-menu');
+    $('.overlay-mobile').toggleClass('show-overlay');
+  })
   // setting owl-carousel library
+
+  var menu = $('.menu');
+  $(window).scroll(function() {
+    if($(this).scrollTop() > 150)
+      menu.addClass('sticky');
+    else
+      menu.removeClass('sticky');
+  })
 
   $('#register-form, #login-form').validate(
     {
@@ -51,6 +76,36 @@ $(document).ready(function () {
     dots: false,
     nav: true,
     navText: ["<i class='fa fa-caret-left'></i>", "<i class='fa fa-caret-right'></i>"],
+    responsiveClass:true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      576: {
+        items: 1
+      },
+      768: {
+        items: 2
+      },
+      1200: {
+        items: 3
+      }
+    }
+  });
+
+  $('.nav-tabs .nav-link').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 30,
+    mouseDrag: false,
+    dots: false,
+    nav: true,
+    navText: ["<i class='fa fa-caret-left'></i>", "<i class='fa fa-caret-right'></i>"],
+    responsiveClass:true,
     responsive: {
       0: {
         items: 1
@@ -75,12 +130,15 @@ $(document).ready(function () {
     dots: false,
     nav: true,
     navText: ["<i class='fa fa-caret-left'></i>", "<i class='fa fa-caret-right'></i>"],
+    responsiveClass:true,
     responsive: {
       0: {
-        items: 1
+        items: 1,
+        autoWidth: false
       },
       576: {
-        items: 2
+        items: 2,
+        autoWidth: false
       },
       992: {
         items: 3
@@ -95,6 +153,7 @@ $(document).ready(function () {
     dots: false,
     nav: true,
     navText: ["<i class='fa fa-caret-left'></i>", "<i class='fa fa-caret-right'></i>"],
+    responsiveClass:true,
     responsive: {
       0: {
         items: 1
@@ -118,6 +177,7 @@ $(document).ready(function () {
     dots: false,
     nav: true,
     navText: ["<i class='fa fa-caret-left'></i>", "<i class='fa fa-caret-right'></i>"],
+    responsiveClass:true,
     responsive: {
       0: {
         items: 1
@@ -137,6 +197,7 @@ $(document).ready(function () {
     dots: false,
     nav: true,
     navText: ["<i class='fa fa-caret-left'></i>", "<i class='fa fa-caret-right'></i>"],
+    responsiveClass:true,
     responsive: {
       0: {
         items: 1
@@ -156,7 +217,7 @@ $(document).ready(function () {
     dots: false,
     nav: true,
     navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-
+    responsiveClass:true,
     responsive: {
       0: {
         items: 1

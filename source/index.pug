@@ -16,11 +16,11 @@ block content
                   li(data-target="#slide", data-slide-to="2")
                 .carousel-inner
                   .carousel-item.active
-                    img(src="images/slider.jpg", class="d-block w-100")
+                    img(src="images/slider.jpg", class="d-block w-100", alt="slider")
                   .carousel-item
-                    img(src="images/slider.jpg", class="d-block w-100")
+                    img(src="images/slider.jpg", class="d-block w-100", alt="slider")
                   .carousel-item
-                    img(src="images/slider.jpg", class="d-block w-100")
+                    img(src="images/slider.jpg", class="d-block w-100", alt="slider")
           .col-xl-4.col-lg-12
             +slider-promo({
               icon:'plane', 
@@ -75,16 +75,49 @@ block content
       .container
         .product-header.d-flex.justify-content-between.flex-column.flex-lg-row
           +title({icon: 'th-large', text: 'sản phẩm mới'})
-          ul.nav.nav-pills.mr-5.pr-5.mb-4.mb-lg-0
-            li.nav-item.mr-2
-              a(href="#tab1", class="nav-link active border rounded-0", title="", data-toggle="pill") Máy khoan
-            - var tabLink = ['Máy in 3D', 'Máy CNC', 'Máy tiện', 'Máy khác']
-            each item in tabLink
-              li.nav-item.mr-2
-                a(href="#", class="nav-link border rounded-0 mb-2 mb-md-0", title="")= item
+          .test
+            ul.nav.pill.mr-0.mr-md-5.pr-0.pr-md-5.mb-4.mb-lg-0
+              - 
+                var tabLink = [
+                  {
+                    text: 'Máy khoan',
+                    href: '#tab1',
+                    active: true
+                  },
+                  {
+                    text: 'Máy in 3D',
+                    href: '#tab2'
+                  }, 
+                  {
+                    text: 'Máy CNC'
+                  }, 
+                  {
+                    text: 'Máy tiện'
+                  }, 
+                  {
+                    text: 'Máy khác'
+                  }
+                ]
+              each item in tabLink
+                li.nav-item.mr-0.mr-md-2
+                  a(href=item.href, 
+                  class="nav-link border rounded-0 mb-2 mb-md-0", 
+                  class=item.active ? 'active' : '', 
+                  data-toggle="pill"
+                  title="")= item.text
         .tab-content
-          div(class="tab-panel fade show active", id="tab1")
-            .owl-carousel#news-product
+          div(class="tab-panel hidden-tab active", id="tab1")
+            .owl-carousel#product
+              .item
+                +product-block({imgName: 'product7.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+              .item
+                +product-block({imgName: 'product8.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+              .item
+                +product-block({imgName: 'product9.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+              .item
+                +product-block({imgName: 'product8.jpg', price: '1.550.000', title: 'máy khoan black decker'})
+          div(class="tab-panel hidden-tab", id="tab2")
+            .owl-carousel#aa
               .item
                 +product-block({imgName: 'product7.jpg', price: '1.550.000', title: 'máy khoan black decker'})
               .item
@@ -119,16 +152,14 @@ block content
             })
     // ./Banner
     // selling products
-    section.selling-products.my-5
+    section.selling-products.my-4.my-md-5
       .container
         .product-header.d-flex.justify-content-between.flex-column.flex-lg-row
           +title({icon: 'th-large', text: 'sản phẩm bán chạy'})
-          ul.nav.nav-pills.mr-5.pr-5.mb-4.mb-lg-0
-            li.nav-item.mr-2
-              a(href="#", class="nav-link active border rounded-0", title="") Máy khoan
+          ul.nav.nav-pills.mr-0.mr-md-5.pr-0.pr-md-5.mb-4.mb-lg-0.flex-column.flex-md-row
             each item in tabLink
-              li.nav-item.mr-2
-                a(href="#", class="nav-link border rounded-0 mb-2 mb-md-0", title="")= item
+              li.nav-item.mr-0.mr-md-2
+                a(href="#", class="nav-link border rounded-0 mb-2 mb-md-0", class=item.active ? 'active' : '', title="")= item.text
         .owl-carousel#selling-product
           .item
             +product-block({imgName: 'product4.jpg', price: '1.550.000', title: 'máy khoan black decker'})
@@ -162,7 +193,7 @@ block content
               a(href="#", title="chi tiết") chi tiết
     // ./Banner full
     // News product list
-    section.news-product-list.py-5.mb-5
+    section.news-product-list.py-0.py-md-5.mb-3.mb-md-5
       .container
         +title({icon: 'th-large', text: 'hàng mới về'})
         .owl-carousel#news-product-list
@@ -214,7 +245,7 @@ block content
           .item
             +product-block({
               productList: 'true', 
-              imgName: 'product-list8.jpg', 
+              imgName: 'progulp puduct-list8.jpg', 
               price: '2.350.000', 
               title: 'máy khoan black decker',
               text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore commo...'
@@ -249,6 +280,7 @@ block content
               form(action="#", class="form-inline justify-content-center")
                 input(type="text", class="form-control", placeholder="Nhập email của bạn...")
                 button(type="submit", class="btn ml-0 ml-lg-2 mt-3 mt-lg-0") ĐĂNG KÝ
-  // ./Newsletter
+    // ./Newsletter
+    .overlay-mobile
   +footer()
 
